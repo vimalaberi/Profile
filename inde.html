@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+
+<style>
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+/* NAVBAR */
+nav {
+    background: #222;
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* SECTIONS */
+section {
+    height: 100vh;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+/* DIFFERENT COLORS */
+#home { background: #00adb5; color: white; }
+#about { background: #eeeeee; }
+#skills { background: #dddddd; }
+#contact { background: #cccccc; }
+
+/* SKILLS */
+.skills {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.skills div {
+    background: black;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+/* FORM */
+input, textarea {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 220px;
+}
+
+button {
+    padding: 10px;
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #00adb5;
+}
+
+/* SCROLL EFFECT */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ANIMATION */
+.fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1s;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="fade">
+    <h1>Hi, I'm Your Name</h1>
+    <p>Frontend Developer | Python Developer</p>
+    <button onclick="showMessage()">Click Me</button>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="fade">
+    <h2>About Me</h2>
+    <p>I build websites and love coding 💻</p>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="fade">
+    <h2>Skills</h2>
+    <div class="skills">
+        <div>HTML</div>
+        <div>CSS</div>
+        <div>JavaScript</div>
+        <div>Python</div>
+        <div>Flutter</div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="fade">
+    <h2>Contact</h2>
+    <form onsubmit="return validateForm()">
+        <input type="text" id="name" placeholder="Name">
+        <input type="email" id="email" placeholder="Email">
+        <textarea id="msg" placeholder="Message"></textarea>
+        <button type="submit">Send</button>
+    </form>
+</section>
+
+<script>
+// BUTTON FUNCTION
+function showMessage() {
+    alert("Welcome to my website 🚀");
+}
+
+// FORM VALIDATION
+function validateForm() {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+
+    if (name === "" || email === "") {
+        alert("Please fill all fields!");
+        return false;
+    }
+
+    alert("Form submitted successfully!");
+    return true;
+}
+
+// SCROLL ANIMATION
+let elements = document.querySelectorAll(".fade");
+
+window.addEventListener("scroll", function () {
+    elements.forEach(el => {
+        let position = el.getBoundingClientRect().top;
+        let screenHeight = window.innerHeight;
+
+        if (position < screenHeight - 100) {
+            el.classList.add("show");
+        }
+    });
+});
+</script>
+
+</body>
+</html>
